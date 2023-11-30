@@ -1,0 +1,27 @@
+class Solution {
+    public int beautifulSubstrings(String s, int k) {     
+         // int consonants=0;
+         String V="aeiou";
+
+         int res=0;
+         char[] ch=s.toCharArray();
+         for(int i=0;i<s.length();i++){
+                      int v=0;
+                      int c=0;
+             for(int j=i;j<s.length();j++){
+                 if(V.indexOf(ch[j])>=0){
+                     v++;
+                     // System.out.println(v);
+                 }
+                 else{
+                     c++;
+                     // System.out.println(c);
+                 }
+                 if(v==c && v*c%k==0){
+                     res++;
+                 }
+             }
+         }
+      return res;
+}
+} 
