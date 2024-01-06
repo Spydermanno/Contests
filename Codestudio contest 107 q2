@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+
+public class Solution {
+    static boolean isSquare(double a){
+        double b=Math.sqrt(a);
+        int p=(int)b;
+        if(b==p)
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    static int Sum(ArrayList<Integer> arr){
+        int sum=0;
+       for(int i=0;i<arr.size();i++){
+           sum+=arr.get(i);
+       }
+       return sum;
+    }
+    static long countMaximumSum(int n, ArrayList<Integer> arr) {
+          int sum=Sum(arr);
+        //   ArrayList<Integer> poi=new ArrayList<Integer>();
+         
+              for(int i=0;i<arr.size();i++){
+                  for(int j=0;j<arr.size();j++){
+                      if(j!=i && isSquare(Math.sqrt(arr.get(i)*arr.get(j))) ){
+                         int p= (int)(2*Math.sqrt(arr.get(i)*arr.get(j)));
+                          arr.set(i,p);
+                          arr.set(j,0);
+                          sum=Math.max(sum,Sum(arr));
+
+                          
+                      }
+                  }
+              }
+              return sum;
+          }
+    }
